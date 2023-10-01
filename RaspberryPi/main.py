@@ -9,7 +9,7 @@ if __name__ == '__main__':
     ser.reset_input_buffer()
 
     pattern = r"output val: ([-+]?[\d]*\.?[\d]+)"
-
+    api_url = "https://intelliseat-api.pkhing.dev/sensor/log"
     while True:
         data = ser.readline()
         decoded_data = data.decode('utf-8', errors='replace')
@@ -34,6 +34,8 @@ if __name__ == '__main__':
                     }
                   ]
                 }
+            response = requests.post(api_url, data=json.dumps(body), headers=headers, verify=False)
+            print("Status code", response.status_code)
             print("Test body", body)
         else:
             print("Unexpected number of values found!")
