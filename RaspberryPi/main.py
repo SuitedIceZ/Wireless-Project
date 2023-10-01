@@ -22,7 +22,7 @@ if __name__ == '__main__':
             print(output_val1, output_val2)
             headers =  {"Content-Type":"application/json"}
             body = {
-                  "nodeGroup": "chair",
+                  "nodeGroup": "chair-1",
                   "sensor": [
                     {
                       "nodeSide": "LEFT",

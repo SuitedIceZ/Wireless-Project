@@ -68,7 +68,7 @@ void setup() {
 
 void loop() {
   static boolean newDataReady = 0;
-  const int serialPrintInterval = 2000; //increase value to slow down serial print activity
+  const int serialPrintInterval = 1000; //increase value to slow down serial print activity
 
   // check for new data/start next conversion:
   if (LoadCell_1.update()) newDataReady = true;
