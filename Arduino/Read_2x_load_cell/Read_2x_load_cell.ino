@@ -35,13 +35,13 @@ void setup() {
   float calibrationValue_1; // calibration value load cell 1
   float calibrationValue_2; // calibration value load cell 2
 
-  calibrationValue_1 = -50.0; // uncomment this if you want to set this value in the sketch
-  calibrationValue_2 = -53.0; // uncomment this if you want to set this value in the sketch
+  //calibrationValue_1 = -50.0; // uncomment this if you want to set this value in the sketch
+  //calibrationValue_2 = -53.0; // uncomment this if you want to set this value in the sketch
 #if defined(ESP8266) || defined(ESP32)
-  //EEPROM.begin(512); // uncomment this if you use ESP8266 and want to fetch the value from eeprom
+  EEPROM.begin(512); // uncomment this if you use ESP8266 and want to fetch the value from eeprom
 #endif
-  //EEPROM.get(calVal_eepromAdress_1, calibrationValue_1); // uncomment this if you want to fetch the value from eeprom
-  //EEPROM.get(calVal_eepromAdress_2, calibrationValue_2); // uncomment this if you want to fetch the value from eeprom
+  EEPROM.get(calVal_eepromAdress_1, calibrationValue_1); // uncomment this if you want to fetch the value from eeprom
+  EEPROM.get(calVal_eepromAdress_2, calibrationValue_2); // uncomment this if you want to fetch the value from eeprom
 
   LoadCell_1.begin();
   LoadCell_2.begin();
@@ -68,7 +68,7 @@ void setup() {
 
 void loop() {
   static boolean newDataReady = 0;
-  const int serialPrintInterval = 500; //increase value to slow down serial print activity
+  const int serialPrintInterval = 2000; //increase value to slow down serial print activity
 
   // check for new data/start next conversion:
   if (LoadCell_1.update()) newDataReady = true;

@@ -171,10 +171,10 @@ void calibrate() {
         EEPROM.begin(512);
 #endif
         EEPROM.put(calVal_eepromAdress1, newCalibrationValue_1);
+        EEPROM.put(calVal_eepromAdress2, newCalibrationValue_2);
 #if defined(ESP8266)|| defined(ESP32)
         EEPROM.commit();
 #endif
-        EEPROM.get(calVal_eepromAdress2, newCalibrationValue_2);
         Serial.print("Value ");
         Serial.print(newCalibrationValue_1, newCalibrationValue_2);
         Serial.print(" saved to EEPROM address: ");
