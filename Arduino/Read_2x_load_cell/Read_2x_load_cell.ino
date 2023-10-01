@@ -28,7 +28,7 @@ const int calVal_eepromAdress_2 = 4; // eeprom adress for calibration value load
 unsigned long t = 0;
 
 void setup() {
-  Serial.begin(57600); delay(10);
+  Serial.begin(57600); delay(500);
   Serial.println();
   Serial.println("Starting...");
 
@@ -68,7 +68,7 @@ void setup() {
 
 void loop() {
   static boolean newDataReady = 0;
-  const int serialPrintInterval = 0; //increase value to slow down serial print activity
+  const int serialPrintInterval = 500; //increase value to slow down serial print activity
 
   // check for new data/start next conversion:
   if (LoadCell_1.update()) newDataReady = true;
