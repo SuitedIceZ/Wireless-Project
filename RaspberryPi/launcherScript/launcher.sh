@@ -4,5 +4,5 @@
 
 cd /
 cd /home/rpiuser/Desktop/WirelessProject/Wireless-Project/RaspberryPi
-sudo python main.py
+# sudo python3 main.py
 cd /
