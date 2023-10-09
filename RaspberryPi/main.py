@@ -4,13 +4,16 @@ import time
 import re
 import requests
 import json
+import os
+from dotenv import load_dotenv
 
 if __name__ == '__main__':
+    load_dotenv()
     ser = serial.Serial('/dev/ttyUSB0', 57600, timeout=1)
     ser.reset_input_buffer()
 
     pattern = r"output val: ([-+]?[\d]*\.?[\d]+)"
-    api_url = "https://intelliseat-api.pkhing.dev/sensor/log"
+    api_url = os.getenv('API_URL')
     is_sit = False
     while True:
         data = ""
@@ -48,18 +51,18 @@ if __name__ == '__main__':
             #print("Test is_sit = True")
             headers =  {"Content-Type":"application/json"}
             body = {
-                  "nodeGroup": "chair-1",
-                  "sensor": [
+                "nodeGroup": "chair-1",
+                "sensor": [
                     {
-                      "nodeSide": "LEFT",
-                      "weight": output_val1
+                        "nodeSide": "LEFT",
+                        "weight": output_val1
                     },
                     {
-                      "nodeSide": "RIGHT",
-                      "weight": output_val2
+                        "nodeSide": "RIGHT",
+                        "weight": output_val2
                     }
-                  ]
-                }
+                ]
+            }
             response = requests.post(api_url, data=json.dumps(body), headers=headers, verify=False)
             print(" Status code", response.status_code)
             #print("Test body", body)
